@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h2>Change your password</h2>
+  <%= render 'devise/shared/links' %>
+</div>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.hidden_field :reset_password_token %>
+  <% if devise_error_messages! != "" %>
+    <div class="alert alert-danger alert-dismissible fade in" id="alert-app" role="alert">
+      <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+        <span>&times;</span>
+      </button>
+      <%= devise_error_messages! %>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :password, "New password",:for=>"newPasswordField" %><br />
+    <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+    <% end %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "off",:class=>"form-control",:id=>"newPasswordField" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, "Confirm new password",:for=>"newPasswordConfirmationField" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off",:class=>"form-control",:id=>"newPasswordConfirmationField" %>
+  </div>
+
+  <%= f.submit "Change my password",:class=>"btn btn-success btn-lg" %> <br />
+<% end %>
