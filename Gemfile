@@ -35,6 +35,8 @@ gem 'fcm'
 gem 'devise'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
+gem 'will_paginate-bootstrap'
+
 
 
 group :development, :test do

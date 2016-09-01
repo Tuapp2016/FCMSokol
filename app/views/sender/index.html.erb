@@ -1,0 +1,14 @@
+<div class="page-header">
+  <%= link_to 'Add', new_sender_path, :class=>"btn btn-success pull-right" %>
+  <h2>Tokens</h2>
+</div>
+<% unless @tokens.empty? %>
+  <div id="tokens">
+    <%= render 'tokens' %>
+  </div>
+  <div id="paginate">
+    <%= render 'paginate' %>
+  </div>
+
+
+<% end %>

@@ -1,0 +1,30 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Token ID</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tokens.each do |token| %>
+        <tr>
+          <td><%= token.token_id %></td>
+          <td>
+            <div class="col-xs-4">
+              <%= link_to 'Show',sender_path(token), :class=>"btn btn-primary" %>
+            </div>
+            <div class="col-xs-4">
+              <%= link_to 'Destroy',sender_path(token), :class=>"btn btn-danger",data: { confirm: "Are you sure?" }, method: :delete %>
+            </div>
+            <div class="col-xs-4">
+              <%= link_to 'Update',edit_sender_path(token),:class=>"btn btn-success" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</div>

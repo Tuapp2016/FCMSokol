@@ -1,3 +1,3 @@
 class Token < ApplicationRecord
-  validates :token_id, uniqueness: true
+  validates :token_id, :uniqueness=>true, :presence=>true
 end
