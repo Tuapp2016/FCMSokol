@@ -36,6 +36,7 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'will_paginate-bootstrap'
+gem "retries"
 
 
 

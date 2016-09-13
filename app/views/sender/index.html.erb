@@ -9,6 +9,12 @@
   <div id="paginate">
     <%= render 'paginate' %>
   </div>
-
-
+  <div class="row">
+    <div class="col-xs-4 col-lg-2">
+      <%=button_to "Send page", {:controller=>"sender",:action=>"senderByPage", :page=>@page},{:class=> 'btn btn-default'} %>
+    </div>
+    <div class="col-xs-4 col-lg-2">
+      <%=button_to "Send All",  {:controller=>"sender",:action=>"senderAll",:page=>@page}, {:class=> 'btn btn-primary'} %>
+    </div>
+  </div>
 <% end %>
