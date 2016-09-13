@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h2>Details</h2>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <th>ID</th>
+        <th><%= @token.token_id %></th>
+      </tr>
+      <tr>
+        <th>Created at</th>
+        <th><%= @token.created_at %></th>
+      </tr>
+      <tr>
+        <th>Updated at</th>
+        <th><%= @token.updated_at %></th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<br>
+<%= link_to 'back', sender_index_path, :class=>"btn btn-default" %>

@@ -1,0 +1,22 @@
+<%= form_for @token, url: {controller:"sender",action: "update"} do |f| %>
+  <% if @token.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade-in" id="alert-app" role="alert">
+      <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+        <span>&times;</span>
+      </button>
+      <h2><%= pluralize(@token.errors.count, "error") %> prohibited this token from being saved:</h2>
+
+      <ul>
+      <% @token.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :token_id,:for=>"tokenField" %>
+    <%= f.text_field :token_id, :id=>"tokenField",:class=>"form-control" %>
+  </div>
+  <%= f.submit "Update", :class=>"btn btn-success"%>
+
+<% end %>

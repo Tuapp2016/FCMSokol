@@ -1,0 +1,84 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>What's sokol?</h1>
+    <p>App, which allows us to track different routes in real time. This app will be developed in android and iOS.</p>
+    <img src="<%= asset_path('sokol_logo.png') %>" alt="" width="100" height="100" class="img-responsive img-thumbnail">
+  </div>
+</div>
+<br/>
+<br/>
+<div id="about">
+  <hr class="divider">
+  <br/>
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="pull-left">About us</h1>
+    </div>
+    <div class="col-lg-4 col-md-6 col-xs-12">
+      <div class="thumbnail">
+        <img src="<%= asset_path('IMG_0061.JPG') %>" height="300"  >
+        <div class="caption">
+          <h3>Andres Gutierrez</h3>
+          <p>I'm a student of computer science in the National University of Colombia. I'm in the ninth semester of it.<br> My likes and hobbies are very diverse but the most important are play football, drink coffee, have a nice talks and absolutelly the programming. I love watching the EPL, I am a big expert of it and Arsenal fan.<br> I'm very interested in development and learn new things every day. At the moment I'm focus in iOS development and the new programming language swift also I am interested in design patterns, software quality and the discovery of new tools to develop software in a better and agile way.</p>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="col-lg-4 col-md-6 col-xs-12">
+      <div class="thumbnail">
+        <img src="https://en.opensuse.org/images/0/0b/Icon-user.png"  height="300">
+        <div class="caption">
+          <h3>Fabian Conejo</h3>
+          <p>Currently Computer Systems Engineering student at the Universidad Nacional de Colombia. Competes in the Colombian Collegiate Programming League and follows Millonarios FC.</p>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-lg-4 col-md-6 col-xs-12">
+      <div class="thumbnail">
+        <img src="https://en.opensuse.org/images/0/0b/Icon-user.png"  height="300" >
+        <div class="caption">
+          <h3>Yeison Garcia</h3>
+          <p>Currently Systems and Computing Engineering student at the Universidad Nacional de Colombia. Computer programming competitor and UNFlea+ coauthor.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<br/>
+<br/>
+<div id="contact">
+  <hr class="divider">
+  <br/>
+  <div class="row">
+
+    <form controller="page" action="contactUS" class="form-signin" method="post" >
+      <h1>Contact us</h1>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <label for="emailField" class="sr-only">Email</label>
+      <div class="input-group margin-bottom-sm">
+        <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i></span>
+        <input type="email" id="emailField", name="email" class="form-control" placeholder="Enter your email" required="true" >
+      </div>
+      <label for="nameField" class="sr-only">Name</label>
+      <div class="input-group margin-bottom-sm">
+        <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+        <input type="text" id="nameField" name="name" class="form-control" placeholder="Enter your name" required="true">
+
+      </div>
+      <label for="commentField" class="sr-only">Comment</label>
+      <div class="input-group margin-bottom-sm">
+        <span class="input-group-addon"><i class="fa fa-commenting-o fa-fw"></i></span>
+        <textarea class="form-control" name="comment" rows="6" id="commentField" required="true" placeholder="Enter your comments"></textarea>
+      </div>
+      <button type="submit" class="btn btn-lg btn-primary btn-block"><%= t('.send_comments')%></button>
+    </form>
+    <br/>
+    <br/>
+
+  </div>
+</div>
