@@ -1,0 +1,12 @@
+<div class="page-header">
+  <h2>Send message to Topic</h2>
+</div>
+<%= form_tag(controller: "sender",action:"sendTopic",method:"post") do %>
+  <div class="form-group">
+    <%= label_tag :topic, nil, {for: "topicField"} %>
+    <%= text_field_tag :topic, nil, placeholder: 'Enter the name of the topic...', class:"form-control", id:"topicField" %>
+  </div>
+  <%= submit_tag "Send", {class:"btn btn-success"} %>
+
+
+<% end %>
