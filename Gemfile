@@ -38,6 +38,7 @@ gem 'font-awesome-rails'
 gem 'will_paginate-bootstrap'
 gem "retries"
 
+gem 'rails_12factor', group: :production
 
 
 group :development, :test do

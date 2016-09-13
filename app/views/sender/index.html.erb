@@ -1,5 +1,9 @@
 <div class="page-header">
-  <%= link_to 'Add', new_sender_path, :class=>"btn btn-success pull-right" %>
+  <div class="pull-right">
+    <%= link_to 'Add', new_sender_path, :class=>"btn btn-success" %>
+    <%= link_to "Send message topic", sender_sender_index_path, :class=>"btn btn-primary" %>
+
+  </div>
   <h2>Tokens</h2>
 </div>
 <% unless @tokens.empty? %>
@@ -17,4 +21,6 @@
       <%=button_to "Send All",  {:controller=>"sender",:action=>"senderAll",:page=>@page}, {:class=> 'btn btn-primary'} %>
     </div>
   </div>
+
+
 <% end %>
