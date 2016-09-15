@@ -52,10 +52,11 @@ class SenderController < ApplicationController
     respond_to do |format|
       if params.key?("topic")
         response =  nil
-        body = "The route " + params["topic"] + " just crossed a checkpoint"
-        title = "Checkpoint notification"
-        body ||= params["body"]
-        title ||= params["title"]
+        body = params["body"]
+        title = params["title"]
+        body ||= "The route " + params["topic"] + " just crossed a checkpoint"
+        title ||= "Checkpoint notification"
+
         with_retries(:max_tries=>20,:base_sleep_seconds=>0.1,:max_sleep_seconds=>2.0) do |attempt|
           if attempt == 20
             format.html {redirect_to sender_index_path, notice: 'There was an error'}
@@ -68,7 +69,7 @@ class SenderController < ApplicationController
         end
       else
         format.html {redirect_to sender_index_path, notice: "We can\'t send the message"}
-        format.json {render json: {error: "We can\'t send the message"}, satus:400}
+        format.json {render json: {error: "We can\'t send the message"}, status:400}
       end
     end
   end
@@ -76,10 +77,10 @@ class SenderController < ApplicationController
     tokens = Token.all
     respond_to do |format|
       response = nil
-      body = "The route just crossed a checkpoint"
-      title = "Checkpoint notification"
-      body ||= params["body"]
-      title ||= params["title"]
+      body = params["body"]
+      title = params["title"]
+      body ||= "The route just crossed a checkpoint"
+      title ||= "Checkpoint notification"
       with_retries(:max_tries=> 20,:base_sleep_seconds =>0.1, :max_sleep_seconds => 2.0)  do |attempt|
         if attempt == 20
           format.html {redirect_to sender_index_path, notice: 'There was an error'}
@@ -97,10 +98,10 @@ class SenderController < ApplicationController
     tokens = Token.all.paginate(:page => params[:page],:per_page => 10).order("created_at ASC")
     respond_to do |format|
       response = nil
-      body = "The route just crossed a checkpoint"
-      title = "Checkpoint notification"
-      body ||= params["body"]
-      title ||= params["title"]
+      body = params["body"]
+      title = params["title"]
+      body ||= "The route just crossed a checkpoint"
+      title ||= "Checkpoint notification"
       with_retries(:max_tries=> 20,:base_sleep_seconds =>0.1, :max_sleep_seconds => 2.0) do |attempt|
         if attempt == 20
           format.html {redirect_to sender_index_path, notice: 'The message was sent succesfully'}
