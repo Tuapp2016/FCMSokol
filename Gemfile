@@ -31,6 +31,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 #Firebase cloud messages
 gem 'fcm'
+#To upload images
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
 
 gem 'devise'
 gem 'bootstrap-sass'

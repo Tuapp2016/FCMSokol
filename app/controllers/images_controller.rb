@@ -4,7 +4,7 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
   def index
-    @images = Image.all.paginate(:page => params[:page],:per_page=> 10).oder("created_at ASC")
+    @images = Image.all.paginate(:page => params[:page],:per_page=> 10).order("created_at ASC")
   end
 
   # GET /images/1
@@ -24,20 +24,33 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
-    @image = Image.new(image_params)
-    @token = Token.find(params[:sender_id])
-    @image.tokens << @token
-
-    respond_to do |format|
-      if @image.save
-        @token.save
-        format.html { redirect_to @image, notice: 'Image was successfully created.' }
-        format.json { render @image, status: 201 }
+    @imageTemp = Image.where("token_id = ? AND route = ?",params[:sender_id],params[:image][:route]).first
+    if @imageTemp == nil
+      @image = Image.new(image_params)
+      @token = Token.find(params[:sender_id])
+      respond_to do |format|
+        if @image.save
+          @token.images << @image
+          @token.save
+          format.html { redirect_to @image, notice: 'Image was successfully created.' }
+          format.json { render @image, status: 201 }
+        else
+          format.html { render :new }
+          format.json { render json: @image.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      if @imageTemp.update(image_params)
+        format.html { redirect_to @imageTemp, notice: 'Image was successfully updated.' }
+        format.json { render :show, status: 201}
       else
-        format.html { render :new }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
+        format.html { render :edit }
+        format.json { render json: @imageTemp.errors, status: :unprocessable_entity }
       end
     end
+
+
+
   end
 
   # PATCH/PUT /images/1

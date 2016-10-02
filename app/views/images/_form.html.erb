@@ -1,13 +1,13 @@
-<%= form_for(image) do |f| %>
-  <% if @token.errors.any? %>
+<%= form_for @image, url: sender_images_path do |f| %>
+  <% if @image.errors.any? %>
     <div class="alert alert-danger alert-dismissible fade-in" id="alert-app" role="alert">
       <button type="button" class="close" aria-label="Close" data-dismiss="alert">
         <span>&times;</span>
       </button>
-      <h2><%= pluralize(@token.errors.count, "error") %> prohibited this token from being saved:</h2>
+      <h2><%= pluralize(@image.errors.count, "error") %> prohibited this token from being saved:</h2>
 
       <ul>
-      <% @token.errors.full_messages.each do |message| %>
+      <% @image.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
