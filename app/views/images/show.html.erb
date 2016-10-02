@@ -1,0 +1,22 @@
+<div class="page-header">
+  <h2>Description</h2>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <th>Route</th>
+        <th><%= @image.route %></th>
+      </tr>
+      <tr>
+        <th>Screenshot</th>
+        <th><img src="<%=@image.image.url%>" width="300" height="300" class="img-responsive img-thumbnail"></th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<br>
+
+<%= link_to 'Destroy',image_path(@image), :class=>"btn btn-danger",data: { confirm: "Are you sure?" }, method: :delete %>
+<%= link_to 'Back', images_path, :class=>"btn btn-default" %>

@@ -5,8 +5,8 @@ class SenderController < ApplicationController
   before_action :set_token, only: [:show,:edit,:update,:destroy]
   def index
     @tokens =  Token.all.paginate(:page => params[:page],:per_page => 10).order("created_at ASC")
-    @page = 1
     @page ||= params[:page]
+    @page = 1
   end
   def show
   end
@@ -118,7 +118,7 @@ class SenderController < ApplicationController
   private
     def sendMessageToTopic(topic,body,title)
       fcm = FCM.new(Rails.application.secrets.fcm_key)
-      options = {notification: {body: body,title:title},priority:"high",content_available:true,time_to_live:2419200}
+      options = {notification: {body: body,title:title,sound:"default"},priority:"high",content_available:true,time_to_live:2419200}
       response = fcm.send_to_topic(topic,options)
       p "#{response}"
       unless response[:status_code] >= 200 && response[:status_code] < 300

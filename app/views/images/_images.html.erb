@@ -1,0 +1,5 @@
+<div class="col-xs-12 col-sm-6 col-lg-4">
+  <img src="<%=image.image.thumb.url %>" class="img-responsive img-thumbnail" width="150" height="150">
+  <%= link_to 'Show', image_path(image), :class=>"btn btn-primary" %>
+  <%= link_to 'Destroy',image_path(image), :class=>"btn btn-danger",data: { confirm: "Are you sure?" }, method: :delete %>
+</div>

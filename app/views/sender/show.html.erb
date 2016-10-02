@@ -19,6 +19,14 @@
     </tbody>
   </table>
 </div>
+<% unless @token.images.empty? %>
+  <div class="tokenImages">
+    <div class="row">
+      <%= render :partial => 'tokenImages', :collection=> @token.images,:as => :image %>
+    </div>
+  </div>
+<% end %>
 <br>
 <br>
+<%= link_to 'new screenshot', new_sender_image_path(@token), :class=>"btn btn-success" %>
 <%= link_to 'back', sender_index_path, :class=>"btn btn-default" %>

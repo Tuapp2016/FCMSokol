@@ -1,0 +1,9 @@
+<div class="page-header">
+  <div class="pull-right">
+    <%= link_to 'Show', @image, :class=>"btn btn-success" %> 
+    <%= link_to 'Back', images_path, :class=>"btn btn-default" %>
+  </div>
+  <h2>Edit image</h2>
+</div>
+
+<%= render 'form', image: @image %>

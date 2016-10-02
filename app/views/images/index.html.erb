@@ -1,0 +1,14 @@
+<div class="page-header">
+  <h2>Images</h2>
+</div>
+
+<% unless @images.empty? %>
+  <div class="images">
+    <div class="row">
+      <%= render :partial => 'images',  :collection => @images, :as => :image %>
+    </div>
+  </div>
+  <div class="paginate">
+    <%= render 'paginate' %>
+  </div>
+<% end %>
