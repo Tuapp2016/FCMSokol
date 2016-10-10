@@ -50,9 +50,9 @@ class ImagesController < ApplicationController
     end
   end
   def createAndSend
-    if params.key?("file") && params.key?("token_id") && params.key("route")
-      token =  Token.find(params[:token_id])
-      imageTemp = Image.where("token_id = ? AND route = ?",token.id,params[:route])
+    if params.key?("file") && params.key?("token_id") && params.key?("route")
+      token =  Token.where("token_id = ?",params[:token_id]).first
+      imageTemp = Image.where("token_id = ? AND route = ?",token.id,params[:route]).first
       if imageTemp == nil
         image = Image.new(image:params[:file],route: params[:route])
         if image.save
@@ -60,17 +60,16 @@ class ImagesController < ApplicationController
           token.save
           imageThumbUrl = image.image.thumb.url
           imageUrl = image.image.url
-          sendMessageFromClient(params[:token_id],params[:route],imageTumbUrl,imageUrl)
-
+          sendMessageFromClient(params[:token_id],params[:route],imageThumbUrl,imageUrl)
         else
           render json: {errors: "There was an error"}, status: 500
         end
       else
-        imageTemp.file = params[:file]
-        if imageTemp.save
+
+        if imageTemp.update(image:params[:file])
           imageThumbUrl = imageTemp.image.thumb.url
           imageUrl = imageTemp.image.url
-          sendMessageFromClient(params[:token_id],params[:route],imageTumbUrl,imageUrl)
+          sendMessageFromClient(params[:token_id],params[:route],imageThumbUrl,imageUrl)
         else
           render json: {errors: "There was an error"}, status: 500
         end
