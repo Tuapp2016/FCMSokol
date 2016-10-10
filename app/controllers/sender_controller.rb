@@ -120,7 +120,6 @@ class SenderController < ApplicationController
       fcm = FCM.new(Rails.application.secrets.fcm_key)
       options = {notification: {body: body,title:title,sound:"default"},priority:"high",content_available:true,time_to_live:2419200}
       response = fcm.send_to_topic(topic,options)
-      p "#{response}"
       unless response[:status_code] >= 200 && response[:status_code] < 300
         raise StandardError,"Error"
       end

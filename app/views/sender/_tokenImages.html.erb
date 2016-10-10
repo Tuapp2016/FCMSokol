@@ -2,6 +2,7 @@
   <img src="<%=image.image.thumb.url %>" width="150" height="150" class="img-responsive img-thumbnail">
   <h3>Route</h3>
   <p><%= image.route %></p>
+  <%=link_to 'Show',image, :class=>"btn btn-primary" %>
   <%=link_to 'Edit',edit_sender_image_path(@token,image), :class=>"btn btn-success" %>
   <%= link_to 'Destroy',image_path(image), :class=>"btn btn-danger",data: { confirm: "Are you sure?" }, method: :delete %>
 </div>

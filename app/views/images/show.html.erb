@@ -1,4 +1,7 @@
 <div class="page-header">
+  <div class="pull-right">
+    <%=link_to 'All Images',    images_path, :class=>"btn btn-success" %>
+  </div>
   <h2>Description</h2>
 </div>
 <div class="table-responsive">
@@ -18,5 +21,8 @@
 <br>
 <br>
 
+<%=link_to 'Edit',edit_sender_image_path(@image.token,@image), :class=>"btn btn-success" %>
 <%= link_to 'Destroy',image_path(@image), :class=>"btn btn-danger",data: { confirm: "Are you sure?" }, method: :delete %>
-<%= link_to 'Back', images_path, :class=>"btn btn-default" %>
+<br>
+<br>
+<%= link_to 'Send screenshot', sendScreenshot_images_path(:token_id => @image.token_id,:route=>@image.route), :class=>"btn btn-primary", method: :post %>

@@ -3,6 +3,11 @@
   <div class="row">
     <br>
     <%= link_to 'Show', image_path(image), :class=>"btn btn-primary" %>
+    <%=link_to 'Edit',edit_sender_image_path(image.token,image), :class=>"btn btn-success" %>
     <%= link_to 'Destroy',image_path(image), :class=>"btn btn-danger",data: { confirm: "Are you sure?" }, method: :delete %>
+  </div>
+  <br>
+  <div class="row">
+    <%= link_to 'Send screenshot', sendScreenshot_images_path(:token_id => image.token_id,:route=>image.route), :class=>"btn btn-default", method: :post %>
   </div>
 </div>

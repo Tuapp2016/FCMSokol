@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :images, only: [:show,:index,:destroy] do
     collection do
       post 'sendScreenshot', :sendScreenshot
+      post 'createAndSend',  :createAndSend, :defaults => {:format => 'json'}
     end
   end
   devise_for :users, :path=> '', :path_names =>{:sign_in => 'signin',:sign_out=>'signout'}
