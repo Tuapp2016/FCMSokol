@@ -131,10 +131,10 @@ class ImagesController < ApplicationController
       body = "This person is following the route with id #{topic}"
       with_retries(:max_tries=>20,:base_sleep_seconds=>0.1,:max_sleep_seconds=>20) do |attempt|
         if attempt == 20
-          render json: {success: "We have sent the message"}, status: 200
+          render json: {errors: "We can't send the message"}, status: 500
         else
           reponse ||= sendMessageToTopicWithImage(topic,body,title,subtitle,imageUrl,imageThumbUrl)
-          render json: {errors: "We can't send the message"}, status: 500
+          render json: {success: "We have sent the message"}, status: 200
         end
       end
     end
@@ -142,7 +142,6 @@ class ImagesController < ApplicationController
       fcm = FCM.new(Rails.application.secrets.fcm_key)
       options = {notification: {body: body,title:title,sound:"default",subtitle:subtitle,click_action:"sokolscreenshot"},data:{image_url: imageUrl,image_thumb_url: imageThumbUrl},priority:"high",content_available:true,time_to_live:2419200}
       response = fcm.send_to_topic(topic,options)
-      p "#{response}"
       unless response[:status_code] >= 200 && response[:status_code] < 300
         raise StandardError,"Error"
       end
