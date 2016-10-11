@@ -140,7 +140,7 @@ class ImagesController < ApplicationController
     end
     def sendMessageToTopicWithImage(topic,body,title,subtitle,imageUrl,imageThumbUrl)
       fcm = FCM.new(Rails.application.secrets.fcm_key)
-      options = {notification: {body: body,title:title,sound:"default",subtitle:subtitle,click_action:"sokolscreenshot"},data:{image_url: imageUrl,image_thumb_url: imageThumbUrl},priority:"high",content_available:true,time_to_live:2419200}
+      options = {notification: {body: body,title:title,sound:"default",subtitle:subtitle,click_action:"co.edu.unal.agutierrezt.sokol.screenshot"},data:{image_url: imageUrl,image_thumb_url: imageThumbUrl},priority:"high",content_available:true,time_to_live:2419200}
       response = fcm.send_to_topic(topic,options)
       unless response[:status_code] >= 200 && response[:status_code] < 300
         raise StandardError,"Error"
