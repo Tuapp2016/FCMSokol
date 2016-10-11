@@ -125,7 +125,7 @@ class ImagesController < ApplicationController
   end
 
   private
-    def sendMessageFromClient(token_id,topic,imageTumbUrl,imageUrl)
+    def sendMessageFromClient(token_id,topic,imageThumbUrl,imageUrl)
       title = "Screenshot"
       subtitle = "The person with id #{token_id} has just send your location"
       body = "This person is following the route with id #{topic}"
